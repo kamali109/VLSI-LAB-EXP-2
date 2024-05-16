@@ -1,4 +1,4 @@
-# SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
+# SIMULATION AND IMPLEMENTATION OF COMBINATIONAL LOGIC CIRCUITS
 
 ## AIM: 
  To simulate and synthesis ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR using Xilinx ISE.
@@ -34,8 +34,6 @@
 
 ![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
 
-
-  
 ## PROCEDURE:
 ```
 STEP:1  Start  the Xilinx navigator, Select and Name the New project.
@@ -55,94 +53,109 @@ STEP:11  On the board, by giving required input, the LEDs starts to glow light, 
 
 #### ENCODER:
 ```h
-module encoder(d,a,b,c) ;
-input [7:0]d;
-output a,b,c;
-or(a,d[4],d[5],d[6],d[7]);
-or(b,d[2],d[3],d[6],d[7]);
-or(c,d[1],d[3],d[5],d[7]);
+module encoder(a,y);
+input [7:0]a;
+output[2:0]y;
+or(y[2],a[6],a[5],a[4],a[3]);
+or(y[1],a[6],a[5],a[2],a[1]);
+or(y[0],a[6],a[4],a[2],a[0]);
 endmodule
+
 ```
 # OUTPUT: 
 ![316583214-c394369a-58e7-40cd-921e-0b02de3bd90b](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/b4ab55c0-2cb5-4859-9df9-4bafea3485a1)
 
 #### DENCODER:
 ```h
-module decoder_8(a,b,c,y);
-input a,b,c; 
-output[7:0]y; 
-and gl(y[0],(~a),(~b),(~c)); 
-and g2(y[1],(~a),(~b),(c)); 
-and g3(y[2],(~a),(b),(~c));
-and g4(y[3],(~a),(b),(c));
-and g5(y[4],(a),(~b),(~c));
-and g6(y[5],(a), (~b), (c));
-and g7(y[6], (a), (b), (~c)); 
-and g8(y[7], (a), (b), (c));
+module decoder1(a,y);
+input [2:0]a;
+output[7:0]y;
+and(y[0],~a[2],~a[1],~a[0]);
+and(y[1],~a[2],~a[1],a[0]);
+and(y[2],~a[2],a[1],~a[0]);
+and(y[3],~a[2],a[1],a[0]);
+and(y[4],a[2],~a[1],~a[0]);
+and(y[5],a[2],~a[1],a[0]);
+and(y[6],a[2],a[1],~a[0]);
+and(y[7],a[2],a[1],a[0]);
 endmodule
 ```
 # OUTPUT:
-![316583423-d2e7856f-08c2-4b1b-a02d-2002f065d868](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/abb6f161-99a4-42d0-a885-1bdb6f56c615)
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/3bc4b836-0b87-4b05-a90c-2fbd5235df91)
 
 #### MULTIPLEXER:
 ```h
-module mux(a,b,c,d,s0,s1,y);
-input a,b,c,d,s0,s1;
-output y;
-assign y=s1 ?(s0?d:c):(s0?b:a);
+module mux(s,c,a);
+input [2:0]s;
+input [7:0]a;
+wire [7:0]w;
+output c;
+and(w[0],a[0],~s[2],~s[1],~s[0]);
+and(w[1],a[1],~s[2],~s[1],s[0]);
+and(w[2],a[2],~s[2],s[1],~s[0]);
+and(w[3],a[3],~s[2],s[1],s[0]);
+and(w[4],a[4],s[2],~s[1],~s[0]);
+and(w[5],a[5],s[2],~s[1],s[0]);
+and(w[6],a[6],s[2],s[1],~s[0]);
+and(w[7],a[7],s[2],s[1],s[0]);
+or (c,w[0],w[1],w[2],w[3],w[4],w[5],w[6],w[7]);
 endmodule
 ```
 # OUTPUT:
-![316583557-9d25ecb1-f219-4841-9cb6-2c062dea00a2](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/83162633-4535-4b13-b911-363d692a3cb7)
+
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/7fcef8f4-5631-46d2-91f8-b0459217c125)
+
 
 #### DEMULTIPLEXER:
 ```h
-module demux(in,s0,s1,s2,d0,d1,d2,d3,d4,d5,d6,d7);
-input in,s0,s1,s2;
-output d0,d1,d2,d3,d4,d5,d6,d7;
-assign d0=(in & ~s2 & ~s1 &~s0),
-d1=(in & ~s2 & ~s1 &s0),
-d2=(in & ~s2 & s1 &~s0),
-d3=(in & ~s2 & s1 &s0),
-d4=(in & s2 & ~s1 &~s0),
-d5=(in & s2 & ~s1 &s0),
-d6=(in & s2 & s1 &~s0),
-d7=(in & s2 & s1 &s0);
+module demux_8(s,a,y);
+input [2:0]s;
+input a;
+output [7:0]y;
+and(y[0],a,~s[2],~s[1],~s[0]);
+and(y[1],a,~s[2],~s[1],s[0]);
+and(y[2],a,~s[2],s[1],~s[0]);
+and(y[3],a,~s[2],s[1],s[0]);
+and(y[4],a,s[2],~s[1],~s[0]);
+and(y[5],a,s[2],~s[1],s[0]);
+and(y[6],a,s[2],s[1],~s[0]);
+and(y[7],a,s[2],s[1],s[0]);
 endmodule
 ```
 # OUTPUT:
-![316583557-9d25ecb1-f219-4841-9cb6-2c062dea00a2](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/83162633-4535-4b13-b911-363d692a3cb7)
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/9bcd043d-f30d-497c-b8b7-47ec6df5eeab)
+
 
 ##### MAGNITUDE COMPARATOR:
 ```h
-module magcomp(a,b,l,g,e);
-input [3:0]a,b;
-output reg l,g,e;
-always @(*)
+module comparator(a,b,eq,lt,gt);
+input [3:0] a,b;
+output reg eq,lt,gt;
+always @(a,b)
 begin
-if(a>b)
-begin
-     l=1'b0;
-     g=1'b1;
-     e=1'b0;
-end
-else if(a<b)
-begin
-     l=1'b1;
-     g=1'b0;
-     e=1'b0;
-end
-else
-begin
-     l=1'b0;
-     g=1'b0;
-     e=1'b1;
-end
-end
+ if (a==b)
+ begin
+  eq = 1'b1;
+  lt = 1'b0;
+  gt = 1'b0;
+ end
+ else if (a>b)
+ begin
+  eq = 1'b0;
+  lt = 1'b0;
+  gt = 1'b1;
+ end
+ else
+ begin
+  eq = 1'b0;
+  lt = 1'b1;
+  gt = 1'b0;
+ end
+end 
 endmodule
 ```
 #### MAGNITUDE COMPARATOR:
-![316583991-1ea94f93-4aad-4691-857d-519f83ec16ac](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/f239e0a0-894b-4047-810b-eeeaf0eb10ee)
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/71aeccc1-1564-4fa0-8f6d-274b62325207)
 
 ## RESULT:
 ```
