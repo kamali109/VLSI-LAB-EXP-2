@@ -37,6 +37,7 @@
 
   
 ## PROCEDURE:
+```
 STEP:1  Start  the Xilinx navigator, Select and Name the New project.
 STEP:2  Select the device family, device, package and speed.       
 STEP:3  Select new source in the New Project and select Verilog Module as the Source type.                       
@@ -48,6 +49,7 @@ STEP:8  Select Check Syntax from the Synthesize  XST Process. Double Click in th
 STEP:9  In the Design Object List Window, enter the pin location for each pin in the Loc column Select save from the File menu.
 STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
+```
 
 ## VERILOG CODE:
 
@@ -61,6 +63,8 @@ or(b,d[2],d[3],d[6],d[7]);
 or(c,d[1],d[3],d[5],d[7]);
 endmodule
 ```
+# OUTPUT: 
+![316583214-c394369a-58e7-40cd-921e-0b02de3bd90b](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/b4ab55c0-2cb5-4859-9df9-4bafea3485a1)
 
 #### DENCODER:
 ```h
@@ -77,6 +81,8 @@ and g7(y[6], (a), (b), (~c));
 and g8(y[7], (a), (b), (c));
 endmodule
 ```
+# OUTPUT:
+![316583423-d2e7856f-08c2-4b1b-a02d-2002f065d868](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/abb6f161-99a4-42d0-a885-1bdb6f56c615)
 
 #### MULTIPLEXER:
 ```h
@@ -86,6 +92,8 @@ output y;
 assign y=s1 ?(s0?d:c):(s0?b:a);
 endmodule
 ```
+# OUTPUT:
+![316583557-9d25ecb1-f219-4841-9cb6-2c062dea00a2](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/83162633-4535-4b13-b911-363d692a3cb7)
 
 #### DEMULTIPLEXER:
 ```h
@@ -102,8 +110,10 @@ d6=(in & s2 & s1 &~s0),
 d7=(in & s2 & s1 &s0);
 endmodule
 ```
+# OUTPUT:
+![316583557-9d25ecb1-f219-4841-9cb6-2c062dea00a2](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/83162633-4535-4b13-b911-363d692a3cb7)
 
-#### MAGNITUDE COMPARATOR:
+##### MAGNITUDE COMPARATOR:
 ```h
 module magcomp(a,b,l,g,e);
 input [3:0]a,b;
@@ -131,23 +141,11 @@ end
 end
 endmodule
 ```
-
-## OUTPUT WAVEFORM:
-#### ENCODER:
-![316583214-c394369a-58e7-40cd-921e-0b02de3bd90b](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/b4ab55c0-2cb5-4859-9df9-4bafea3485a1)
-
-#### DENCODER:
-![316583423-d2e7856f-08c2-4b1b-a02d-2002f065d868](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/abb6f161-99a4-42d0-a885-1bdb6f56c615)
-
-#### MULTIPLEXER:
-![316583557-9d25ecb1-f219-4841-9cb6-2c062dea00a2](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/83162633-4535-4b13-b911-363d692a3cb7)
-
-#### DEMULTIPLEXER:
-![316583808-c34e0d0c-2745-45fe-b140-6e37c08a25ad](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/14ab36c2-0971-437c-ad97-a7f3efa6a784)
-
 #### MAGNITUDE COMPARATOR:
 ![316583991-1ea94f93-4aad-4691-857d-519f83ec16ac](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/f239e0a0-894b-4047-810b-eeeaf0eb10ee)
 
 ## RESULT:
-Hence ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR are simulated and synthesised using Xilinx ISE
+```
+Hence ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR are simulated and synthesised using Xilinx ISE.
+```
 
