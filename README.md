@@ -5,34 +5,7 @@
 
 ## APPARATUS REQUIRED:
 
-• Xilinx 14.7 Spartan6 FPGA
-
-
-## LOGIC DIAGRAM:
-
-## ENCODER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/3cd1f95e-7531-4cad-9154-fdd397ac439e)
-
-
-## DECODER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/45a5e6cf-bbe0-4fd5-ac84-e5ad4477483b)
-
-
-## MULTIPLEXER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/427f75b2-8e67-44b9-ac45-a66651787436)
-
-
-## DEMULTIPLEXER
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/1c45a7fc-08ac-4f76-87f2-c084e7150557)
-
-
-## MAGNITUDE COMPARATOR
-
-![image](https://github.com/navaneethans/VLSI-LAB-EXP-2/assets/6987778/b2fe7a05-6bf7-4dcb-8f5d-28abbf7ea8c2)
+•vivado 2023.2
 
 ## PROCEDURE:
 ```
@@ -49,9 +22,13 @@ STEP:10 Double click on the Implement Design and double click on the Generate Pr
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
 ```
 
-## VERILOG CODE:
+# LOGIC DIAGRAM:
 
-#### ENCODER:
+# ENCODER:
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/1226a14a-e4eb-43d3-9127-89e0ea3212ff)
+
+## CODE:
+
 ```h
 module encoder(a,y);
 input [7:0]a;
@@ -65,7 +42,10 @@ endmodule
 # OUTPUT: 
 ![316583214-c394369a-58e7-40cd-921e-0b02de3bd90b](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/b4ab55c0-2cb5-4859-9df9-4bafea3485a1)
 
-#### DENCODER:
+# DENCODER:
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/43207494-7237-435a-9715-f45dae0b2a39)
+
+# CODE:
 ```h
 module decoder1(a,y);
 input [2:0]a;
@@ -83,7 +63,10 @@ endmodule
 # OUTPUT:
 ![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/3bc4b836-0b87-4b05-a90c-2fbd5235df91)
 
-#### MULTIPLEXER:
+# MULTIPLEXER:
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/4d79779b-61d0-4178-adcf-d861e5bd1099)
+
+# CODE:
 ```h
 module mux(s,c,a);
 input [2:0]s;
@@ -105,8 +88,10 @@ endmodule
 
 ![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/7fcef8f4-5631-46d2-91f8-b0459217c125)
 
+# DEMULTIPLEXER:
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/ee9a11f7-fffb-4ffb-a811-d83cb2f44350)
 
-#### DEMULTIPLEXER:
+# CODE:
 ```h
 module demux_8(s,a,y);
 input [2:0]s;
@@ -126,7 +111,10 @@ endmodule
 ![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/9bcd043d-f30d-497c-b8b7-47ec6df5eeab)
 
 
-##### MAGNITUDE COMPARATOR:
+# MAGNITUDE COMPARATOR:
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/a129f76f-daba-48b3-8e3d-8d16e2d4393e)
+
+# CODE:
 ```h
 module comparator(a,b,eq,lt,gt);
 input [3:0] a,b;
@@ -154,8 +142,9 @@ begin
 end 
 endmodule
 ```
-#### MAGNITUDE COMPARATOR:
-![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/71aeccc1-1564-4fa0-8f6d-274b62325207)
+# OUTPUT:
+![image](https://github.com/kamali109/VLSI-LAB-EXP-2/assets/160600794/b8c29138-e538-48bb-893e-daf99c55a8ef)
+
 
 ## RESULT:
 ```
